@@ -15,7 +15,7 @@
 			</value>
           </nomatch>
           <match Class="PatchOperationAdd">
-            <xpath>/Defs/ThingDef[defName="Plant_Grass" or defName="Plant_TallGrass"]/comps</xpath>
+            <xpath>/Defs/ThingDef[boolean(comps) and (defName="Plant_Grass" or defName="Plant_TallGrass")]/comps</xpath>
             <value>
 				<li Class="CreepingWeeds.CompProperties_CreepingPlant">
 					<chance>0.5</chance>
@@ -36,7 +36,7 @@
 			</value>
           </nomatch>
           <match Class="PatchOperationAdd">
-            <xpath>/Defs/ThingDef[defName="Plant_Bush" or defName="Plant_Brambles"]/comps</xpath>
+            <xpath>/Defs/ThingDef[boolean(comps) and (defName="Plant_Bush" or defName="Plant_Brambles")]/comps</xpath>
             <value>
 				<li Class="CreepingWeeds.CompProperties_CreepingPlant">
 					<chance>0.25</chance>

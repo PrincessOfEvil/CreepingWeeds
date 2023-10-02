@@ -15,7 +15,7 @@
 			</value>
           </nomatch>
           <match Class="PatchOperationAdd">
-            <xpath>/Defs/ThingDef[defName="Plant_Dandelion" or defName="Plant_Astragalus" or defName="Plant_Moss"]/comps</xpath>
+            <xpath>/Defs/ThingDef[boolean(comps) and (defName="Plant_Dandelion" or defName="Plant_Astragalus" or defName="Plant_Moss")]/comps</xpath>
             <value>
 				<li Class="CreepingWeeds.CompProperties_CreepingPlant">
 					<chance>0.5</chance>

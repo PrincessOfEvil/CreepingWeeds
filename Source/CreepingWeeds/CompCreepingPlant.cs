@@ -77,6 +77,7 @@ public class CompCreepingPlant : ThingComp
 			{
 			var vec = IntVec3.North.RotatedBy(new Rot4(i)) + Parent.Position;
 			if (!Parent.def.CanEverPlantAt(vec, Parent.Map)) continue;
+			if (vec.GetPlant(Parent.Map) != null) continue;
 			var fertility = Parent.Map.wildPlantSpawner.GetBaseDesiredPlantsCountAt(vec);
 			if (fertility == 0f || Parent.def.plant.fertilityMin > fertility ||
 				Parent.def.plant.fertilitySensitivity != 0 && !Rand.Chance(fertility)) continue;
@@ -122,6 +123,7 @@ public class CompCreepingPlant : ThingComp
 			{
 			var vec = IntVec3.North.RotatedBy(new Rot4(i)) + Parent.Position;
 			if (!Parent.def.CanEverPlantAt(vec, Parent.Map)) continue;
+			if (vec.GetPlant(Parent.Map) != null) continue;
 			var fertility = Mathf.Min(Parent.Map.wildPlantSpawner.GetBaseDesiredPlantsCountAt(vec), 1f);
 			if (fertility == 0f || Parent.def.plant.fertilityMin > fertility || Parent.def.plant.fertilitySensitivity == 0) continue;
 			chance *= 1 - fertility;

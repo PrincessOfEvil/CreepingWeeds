@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreepingWeeds", "CreepingWeeds.csproj", "{C2FFEE83-2F68-4A34-8AEB-8FE58C4104CB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rimworld", "..\..\..\..\..\..\RimWorld-1.4\Source\Rimworld.csproj", "{71102514-189B-45A1-B603-A61E69451401}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rimworld", "..\..\..\..\Source\Rimworld.csproj", "{71102514-189B-45A1-B603-A61E69451401}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
