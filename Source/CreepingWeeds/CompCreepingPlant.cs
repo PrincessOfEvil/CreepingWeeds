@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
 using HarmonyLib;
+using LudeonTK;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -75,17 +76,17 @@ public class CompCreepingPlant : ThingComp
 		I.Shuffle();
 		foreach (int i in I)
 			{
-			var vec = IntVec3.North.RotatedBy(new Rot4(i)) + Parent.Position;
+			IntVec3 vec = IntVec3.North.RotatedBy(new Rot4(i)) + Parent.Position;
 			if (!Parent.def.CanEverPlantAt(vec, Parent.Map)) continue;
 			if (vec.GetPlant(Parent.Map) != null) continue;
-			var fertility = Parent.Map.wildPlantSpawner.GetBaseDesiredPlantsCountAt(vec);
+			float fertility = Parent.Map.wildPlantSpawner.GetBaseDesiredPlantsCountAt(vec);
 			if (fertility == 0f || Parent.def.plant.fertilityMin > fertility ||
-				Parent.def.plant.fertilitySensitivity != 0 && !Rand.Chance(fertility)) continue;
+				(Parent.def.plant.fertilitySensitivity != 0 && !Rand.Chance(fertility))) continue;
 
 			var newPlant = (Plant) GenSpawn.Spawn(Parent.def, vec, Parent.Map);
 			newPlant.Growth = 0.0001f;
 			newPlant.sown = Parent.sown;
-			newPlant.Map.mapDrawer.MapMeshDirty(newPlant.Position, MapMeshFlag.Things);
+			newPlant.DirtyMapMesh(Parent.Map);
 
 			if (Prefs.DevMode && Prefs.LogVerbose)
 				Log.Message("Plant spread: " + newPlant.def.label + " at " + vec.ToString());
@@ -96,8 +97,8 @@ public class CompCreepingPlant : ThingComp
 
 	public override IEnumerable<Gizmo> CompGetGizmosExtra()
 		{
-		var gizmos =  base.CompGetGizmosExtra();
-		if (!gizmos.EnumerableNullOrEmpty()) foreach (var gizmo in gizmos)
+		IEnumerable<Gizmo> gizmos =  base.CompGetGizmosExtra();
+		if (!gizmos.EnumerableNullOrEmpty()) foreach (Gizmo gizmo in gizmos)
 			{
 			yield return gizmo;
 			}
